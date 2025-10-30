@@ -32,5 +32,15 @@ def leave():
     project_id = request.args.get("projectId", "").strip()
     return jsonify({"projectId": project_id, "message": f"Left {project_id}"})
 
+from flask import jsonify
+
+@app.get("/")
+def home():
+    return "EE461L HW5 backend is running. Try /api/join?projectId=1"
+
+@app.get("/api/health")
+def health():
+    return jsonify({"ok": True})
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
